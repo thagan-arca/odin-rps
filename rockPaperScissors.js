@@ -17,21 +17,21 @@ const playRound = function() {
     const computerChoice = getComputerChoice();
     const humanChoice = arguments[0]; // Get the human choice from the button click event;
 
-    gameInfo.textContent = `Computer chose: ${computerChoice}`;
-    gameInfo.textContent += `You chose: ${humanChoice}`;
+    gameInfo.textContent = `\nComputer chose: ${computerChoice}`;
+    gameInfo.textContent += `\nYou chose: ${humanChoice}`;
 
     if (computerChoice === humanChoice) {
-        gameInfo.textContent += "It's a tie!";
+        gameInfo.textContent += "\nIt's a tie!";
     } else if (
         (computerChoice === 'rock' && humanChoice === 'scissors') ||
         (computerChoice === 'paper' && humanChoice === 'rock') ||
         (computerChoice === 'scissors' && humanChoice === 'paper')
     ) {
         computerScore++;
-        gameInfo.textContent += "Computer wins!";
+        gameInfo.textContent += "\nComputer wins!";
     } else {
         humanScore++;
-        gameInfo.textContent += "You win!";
+        gameInfo.textContent += "\nYou win!";
     }
     scoreCheck();
 }
@@ -49,11 +49,11 @@ const playGame = function() {
     }
     gameInfo.textContent += `Final Score - You: ${humanScore}, Computer: ${computerScore}\n`;
     if (humanScore > computerScore) {
-        gameInfo.textContent += "Congratulations! You win the game!";
+        gameInfo.textContent += "\nCongratulations! You win the game!";
     } else if (humanScore < computerScore) {
-        gameInfo.textContent += "Computer wins the game!";
+        gameInfo.textContent += "\nComputer wins the game!";
     } else {
-        gameInfo.textContent += "The game is a tie!";
+        gameInfo.textContent += "\nThe game is a tie!";
     }
 }
 
@@ -71,19 +71,22 @@ buttons.forEach(button => {
 
 const scoreCheck = function() {
     if (humanScore === 5 || computerScore === 5) {
-        gameInfo.textContent += "Game Over! Final Scores:\n";
+        gameInfo.textContent += "\n\nGame Over! Final Scores:\n";
         gameInfo.textContent += `You: ${humanScore}, Computer: ${computerScore}\n`;
         if (humanScore > computerScore) {
-            gameInfo.textContent += "Congratulations! You win the game!";
+            gameInfo.textContent += "\nCongratulations! You win the game!";
         }
         else if (humanScore < computerScore) {
-            gameInfo.textContent += "Computer wins the game!";
+            gameInfo.textContent += "\nComputer wins the game!";
         }
         else {
-            gameInfo.textContent += "The game is a tie!";
+            gameInfo.textContent += "\nThe game is a tie!";
         }
         humanScore = 0; // Reset scores for a new game
         computerScore = 0;
+    }
+    else {
+        gameInfo.textContent += `\n\nYou: ${humanScore}, Computer: ${computerScore}\n`;
     }
 }
 
@@ -96,3 +99,4 @@ gameInfo.id = 'gameInfo';
 // gameInfo.style.display = 'flex';
 // gameInfo.style.flexDirection = 'column';
 document.body.appendChild(gameInfo);
+
